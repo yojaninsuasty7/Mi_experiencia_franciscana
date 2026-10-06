@@ -1,272 +1,111 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esta Fue Mi Experiencia - Semana Franciscana</title>
-    <!-- Tailwind CSS CDN para un diseño moderno y responsivo -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'azul-fondo': '#e0f2fe',
-                        'azul-oscuro': '#001f54',
-                        'rojo-vivo': '#ff0000',
-                        'rojo-hover': '#cc0000'
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #e0f2fe;
-            color: #001f54;
-            overflow-x: hidden;
-        }
-
-        .fade-exit {
-            opacity: 0;
-            transform: translateY(-20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .fade-enter {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .fade-enter-active {
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        /* Estilo interactivo para el botón */
-        .btn-interactivo {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px -5px rgba(255, 0, 0, 0.4);
-        }
-
-        .btn-interactivo:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 30px -5px rgba(255, 0, 0, 0.6);
-        }
-
-        .btn-interactivo:active {
-            transform: translateY(1px) scale(0.98);
-        }
-
-        /* Efecto de marco en tarjetas */
-        .tarjeta-foto {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .tarjeta-foto:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 31, 84, 0.15), 0 8px 10px -6px rgba(0, 31, 84, 0.1);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Experiencia Franciscana</title>
+  <!-- CDN de Tailwind CSS necesario para el diseño y animación -->
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-rojo-vivo selection:text-white">
+<body class="bg-[#dbeafe] text-[#1e3a8a] min-h-screen font-sans flex flex-col items-center justify-center p-4">
 
-    <div id="pantalla-inicio" class="min-h-screen flex flex-col items-center justify-center p-6 text-center transition-all duration-500">
-        <div class="max-w-3xl mx-auto space-y-8">
-            <span class="inline-block bg-rojo-vivo/10 text-rojo-vivo font-semibold px-4 py-1.5 rounded-full text-sm border border-rojo-vivo/20 uppercase tracking-wider">
-                Semana Franciscana
-            </span>
-            
-            <h1 class="text-4xl sm:text-6xl font-extrabold text-azul-oscuro tracking-tight leading-tight">
-                Esta fue mi experiencia
-            </h1>
-            
-            <p class="text-lg sm:text-xl text-azul-oscuro/80 max-w-2xl mx-auto font-normal leading-relaxed">
-                Esta página web hecha con HTML registra mi experiencia en la semana franciscana
-            </p>
+  <!-- PANTALLA DE INICIO INTERACTIVA -->
+  <div id="welcome-screen" class="flex flex-col items-center justify-center text-center space-y-6 max-w-lg mx-auto min-h-[80vh]">
+    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">
+      Esta fue mi experiencia
+    </h1>
+    <p class="text-lg opacity-85">
+      Un recorrido por los momentos más significativos vividos durante la Semana Franciscana.
+    </p>
+    <button id="start-btn" class="bg-[#ff0000] hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 cursor-pointer">
+      Ver Experiencia
+    </button>
+  </div>
 
-            <div class="pt-6">
-                <button id="btn-entrar" class="btn-interactivo bg-rojo-vivo text-white font-bold text-lg sm:text-xl px-10 py-4 rounded-xl inline-flex items-center gap-3 cursor-pointer group">
-                    <span>Entrar a la presentación</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                </button>
-            </div>
+  <!-- SECCIÓN DE PRESENTACIÓN Y REFLEXIÓN (Oculta al inicio) -->
+  <main id="main-content" class="hidden w-full max-w-4xl mx-auto py-8 space-y-12">
+    
+    <header class="text-center space-y-4 border-b border-[#1e3a8a]/20 pb-8">
+      <h2 class="text-3xl sm:text-4xl font-bold text-[#1e3a8a]">Reflexión Franciscana</h2>
+      <p class="text-base sm:text-lg max-w-2xl mx-auto opacity-90">
+        A continuación comparto mis respuestas sobre las actividades realizadas y las imágenes de cada uno de los eventos de la Semana Franciscana.
+      </p>
+    </header>
+
+    <!-- PREGUNTAS DE REFLEXIÓN -->
+    <section class="bg-white/60 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-md border border-[#1e3a8a]/10 space-y-6">
+      <h3 class="text-2xl font-bold text-[#ff0000]">Preguntas y Reflexiones</h3>
+      
+      <div class="space-y-4">
+        <div>
+          <h4 class="font-semibold text-lg text-[#1e3a8a]">1. ¿Cómo influyeron estas actividades en tu percepción de la comunidad?</h4>
+          <p class="text-gray-800 mt-1">Me ayudó a compartir más con la gente de la universidad y tener momentos de sana convivencia.</p>
         </div>
-    </div>
 
-    <div id="pantalla-presentacion" class="hidden min-h-screen py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-12">
+        <hr class="border-[#1e3a8a]/10">
+
+        <div>
+          <h4 class="font-semibold text-lg text-[#1e3a8a]">2. ¿Cuál fue el momento más significativo para ti durante la Semana Franciscana?</h4>
+          <p class="text-gray-800 mt-1">El bici-paseo, ya que fue muy divertido hacer ejercicio mientras se recorría la ciudad junto a los compañeros.</p>
+        </div>
+
+        <hr class="border-[#1e3a8a]/10">
+
+        <div>
+          <h4 class="font-semibold text-lg text-[#1e3a8a]">3. ¿De qué manera te sentiste conectado con los valores franciscanos?</h4>
+          <p class="text-gray-800 mt-1">A través de la fraternidad y el respeto compartido durante los distintos eventos académicos y deportivos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOQUES DE IMÁGENES -->
+    <section class="space-y-8">
+      <h3 class="text-2xl font-bold text-center text-[#1e3a8a]">Galería de Actividades</h3>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
-        <!-- Encabezado de la presentación -->
-        <header class="text-center space-y-4 border-b-2 border-rojo-vivo/20 pb-8">
-            <h2 class="text-3xl sm:text-5xl font-black text-azul-oscuro tracking-tight">
-                Reflexión
-            </h2>
-            <div class="w-24 h-1.5 bg-rojo-vivo mx-auto rounded-full"></div>
-        </header>
-
-        <!-- Bloque de preguntas y respuestas de Reflexión -->
-        <section class="grid gap-6 md:gap-8 bg-white/70 backdrop-blur-md p-6 sm:p-10 rounded-2xl border border-azul-oscuro/10 shadow-sm">
-            
-            <div class="space-y-2 border-l-4 border-rojo-vivo pl-4 sm:pl-6">
-                <h3 class="text-xl font-bold text-azul-oscuro flex items-center gap-2">
-                    <span class="text-rojo-vivo">1.</span> ¿Qué experiencia marcó?
-                </h3>
-                <p class="text-azul-oscuro/90 leading-relaxed text-base sm:text-lg">
-                    La experiencia que marcó fue el bici-paseo ya que contiene un mensaje importante que incentiva a cuidar del planeta, detallando la experiencia personal fue un rato agradable de compartir una actividad con muchas personas, la cual ayudó a mi estado físico y mental.
-                </p>
-            </div>
-
-            <div class="space-y-2 border-l-4 border-rojo-vivo pl-4 sm:pl-6">
-                <h3 class="text-xl font-bold text-azul-oscuro flex items-center gap-2">
-                    <span class="text-rojo-vivo">2.</span> ¿Qué te llevas de la universidad?
-                </h3>
-                <p class="text-azul-oscuro/90 leading-relaxed text-base sm:text-lg">
-                    Diría que me llevo una impresión muy positiva, realmente este tipo de eventos no son comúnmente realizados por otras universidades, el enfoque a no simplemente compartir conocimiento sino llevarlo más allá que es el apartado social y cultural, lo anteriormente mencionado es propio de una estructura muy completa de plan de semestre.
-                </p>
-            </div>
-
-            <div class="space-y-2 border-l-4 border-rojo-vivo pl-4 sm:pl-6">
-                <h3 class="text-xl font-bold text-azul-oscuro flex items-center gap-2">
-                    <span class="text-rojo-vivo">3.</span> ¿Cómo aportarás a tu comunidad?
-                </h3>
-                <p class="text-azul-oscuro/90 leading-relaxed text-base sm:text-lg">
-                    El aporte que hago es dar mi experiencia con la parte de lo importante que es compartir experiencias y no querer optimizar siempre, comunicar lo bueno de eso así como lo del bici-paseo.
-                </p>
-            </div>
-
-        </section>
-
-        <section class="space-y-8 pt-4">
-            <h3 class="text-2xl font-bold text-azul-oscuro text-center border-b border-azul-oscuro/10 pb-4">
-                Galería de la Experiencia
-            </h3>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <!-- Tarjeta 1: Bici-paseo -->
-                <article class="tarjeta-foto bg-white rounded-2xl overflow-hidden border border-azul-oscuro/15 flex flex-col">
-                    <div class="relative aspect-[4/3] bg-azul-oscuro/5 overflow-hidden">
-                        <img 
-                            src="IMG-20261005-WA0000_d69ba8.jpg" 
-                            alt="Bici paseo panorama" 
-                            class="w-full h-full object-cover"
-                            onerror="this.onerror=null; this.src='https://placehold.co/600x450/001f54/ffffff?text=IMG-20261005-WA0000_d69ba8.jpg';"
-                        >
-                        <span class="absolute top-3 left-3 bg-rojo-vivo text-white text-xs font-bold px-2.5 py-1 rounded-md shadow">
-                            Actividad 1
-                        </span>
-                    </div>
-                    <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
-                        <p class="text-azul-oscuro text-sm sm:text-base leading-relaxed">
-                            Esto fue el bici paseo, una experiencia muy satisfactoria por el tema general y la experiencia vivida.
-                        </p>
-                    </div>
-                </article>
-
-                <!-- Tarjeta 2: Cineforo -->
-                <article class="tarjeta-foto bg-white rounded-2xl overflow-hidden border border-azul-oscuro/15 flex flex-col">
-                    <div class="relative aspect-[4/3] bg-azul-oscuro/5 overflow-hidden">
-                        <img 
-                            src="IMG_20260930_092243_d69c04.jpg" 
-                            alt="Cineforo sala" 
-                            class="w-full h-full object-cover"
-                            onerror="this.onerror=null; this.src='https://placehold.co/600x450/001f54/ffffff?text=IMG_20260930_092243_d69c04.jpg';"
-                        >
-                        <span class="absolute top-3 left-3 bg-rojo-vivo text-white text-xs font-bold px-2.5 py-1 rounded-md shadow">
-                            Actividad 2
-                        </span>
-                    </div>
-                    <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
-                        <p class="text-azul-oscuro text-sm sm:text-base leading-relaxed">
-                            Aquí en el cineforo mirando el contenido dado pero también conociendo por primera vez esa sala, la cual es muy cómoda, por lo tanto esta actividad sirvió para querer indagar los espacios de la universidad aún no recorridos.
-                        </p>
-                    </div>
-                </article>
-
-                <!-- Tarjeta 3: Evento Idiomas -->
-                <article class="tarjeta-foto bg-white rounded-2xl overflow-hidden border border-azul-oscuro/15 flex flex-col">
-                    <div class="relative aspect-[4/3] bg-azul-oscuro/5 overflow-hidden">
-                        <img 
-                            src="IMG_20260930_163955_d69c3c.jpg" 
-                            alt="Evento departamento de idiomas" 
-                            class="w-full h-full object-cover"
-                            onerror="this.onerror=null; this.src='https://placehold.co/600x450/001f54/ffffff?text=IMG_20260930_163955_d69c3c.jpg';"
-                        >
-                        <span class="absolute top-3 left-3 bg-rojo-vivo text-white text-xs font-bold px-2.5 py-1 rounded-md shadow">
-                            Actividad 3
-                        </span>
-                    </div>
-                    <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
-                        <p class="text-azul-oscuro text-sm sm:text-base leading-relaxed">
-                            Aquí estoy en el evento organizado por el departamento de idiomas enfocado en inglés mirando cronológicamente el programa preparado, a su vez participando en las actividades y eventos que transcurrían, una experiencia buena para reconocer y mirar lo importante que es el idioma global inglés.
-                        </p>
-                    </div>
-                </article>
-
-            </div>
-        </section>
-
-        <!-- Botón para volver al inicio opcional al final -->
-        <div class="text-center pt-8 pb-12">
-            <button id="btn-volver" class="text-azul-oscuro/70 hover:text-rojo-vivo font-medium text-sm inline-flex items-center gap-2 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
-                <span>Volver a la portada</span>
-            </button>
+        <!-- Imagen 1: Bici-paseo -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-[#1e3a8a]/10 flex flex-col">
+          <img src="IMG-20261005-WA0000_d69ba8.jpg" alt="Bici-paseo" class="w-full h-56 object-cover">
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <h4 class="font-bold text-lg text-[#1e3a8a]">Bici-paseo</h4>
+            <p class="text-sm text-gray-700 mt-2">Actividad de recorrido en bicicleta por la ciudad fomentando la integración y el deporte.</p>
+          </div>
         </div>
 
-    </div>
+        <!-- Imagen 2: Cineforo -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-[#1e3a8a]/10 flex flex-col">
+          <img src="IMG_20260930_092243_d69c04.jpg" alt="Cineforo" class="w-full h-56 object-cover">
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <h4 class="font-bold text-lg text-[#1e3a8a]">Cineforo</h4>
+            <p class="text-sm text-gray-700 mt-2">Espacio de reflexión y diálogo a través de proyecciones audiovisuales en el auditorio.</p>
+          </div>
+        </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const btnEntrar = document.getElementById('btn-entrar');
-            const btnVolver = document.getElementById('btn-volver');
-            const pantallaInicio = document.getElementById('pantalla-inicio');
-            const pantallaPresentacion = document.getElementById('pantalla-presentacion');
+        <!-- Imagen 3: Evento de Idiomas -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-[#1e3a8a]/10 flex flex-col">
+          <img src="IMG_20260930_163955_d69c3c.jpg" alt="Evento del Departamento de Inglés" class="w-full h-56 object-cover">
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <h4 class="font-bold text-lg text-[#1e3a8a]">Departamento de Idiomas</h4>
+            <p class="text-sm text-gray-700 mt-2">Presentación y eventos culturales organizados por el área de inglés.</p>
+          </div>
+        </div>
 
-            // Transición de Entrada
-            btnEntrar.addEventListener('click', () => {
-                pantallaInicio.classList.add('fade-exit');
-                
-                setTimeout(() => {
-                    pantallaInicio.classList.add('hidden');
-                    pantallaInicio.classList.remove('fade-exit');
-                    
-                    pantallaPresentacion.classList.remove('hidden');
-                    pantallaPresentacion.classList.add('fade-enter');
-                    
-                    // Trigger reflow
-                    void pantallaPresentacion.offsetWidth;
-                    
-                    pantallaPresentacion.classList.add('fade-enter-active');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }, 400);
-            });
+      </div>
+    </section>
 
-            // Transición de Regreso (opcional)
-            btnVolver.addEventListener('click', () => {
-                pantallaPresentacion.classList.remove('fade-enter-active');
-                pantallaPresentacion.classList.add('fade-exit');
+  </main>
 
-                setTimeout(() => {
-                    pantallaPresentacion.classList.add('hidden');
-                    pantallaPresentacion.classList.remove('fade-exit', 'fade-enter');
-                    
-                    pantallaInicio.classList.remove('hidden');
-                    pantallaInicio.classList.add('fade-enter-active');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }, 400);
-            });
-        });
-    </script>
+  <!-- LÓGICA DE INTERACCIÓN -->
+  <script>
+    document.getElementById('start-btn').addEventListener('click', function() {
+      const welcomeScreen = document.getElementById('welcome-screen');
+      const mainContent = document.getElementById('main-content');
+      
+      welcomeScreen.classList.add('hidden');
+      mainContent.classList.remove('hidden');
+    });
+  </script>
+
 </body>
 </html>
